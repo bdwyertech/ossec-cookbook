@@ -45,6 +45,8 @@ execute "tar zxvf #{ossec_dir}.tar.gz" do
   creates "#{Chef::Config[:file_cache_path]}/#{ossec_dir}"
 end
 
+include_recipe 'ossec::rules'
+
 template "#{Chef::Config[:file_cache_path]}/#{ossec_dir}/etc/preloaded-vars.conf" do
   source "preloaded-vars.conf.erb"
   variables :ossec => node['ossec']['user']
