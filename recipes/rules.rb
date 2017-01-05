@@ -24,7 +24,7 @@
   'ossec_rules.xml'
 ].each do |rule_file|
   cookbook_file "#{node['ossec']['user']['dir']}/rules/#{rule_file}" do
-    source "rules/#{rules_file}"
+    source "rules/#{rule_file}"
     owner "root"
     group "ossec"
     mode 0440
