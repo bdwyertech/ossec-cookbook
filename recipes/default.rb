@@ -45,8 +45,6 @@ execute "tar zxvf #{ossec_dir}.tar.gz" do
   creates "#{Chef::Config[:file_cache_path]}/#{ossec_dir}"
 end
 
-include_recipe 'ossec::rules'
-
 template "#{Chef::Config[:file_cache_path]}/#{ossec_dir}/etc/preloaded-vars.conf" do
   source "preloaded-vars.conf.erb"
   variables :ossec => node['ossec']['user']
@@ -97,6 +95,8 @@ execute 'Enable Remote Syslog Shipping' do
   only_if { node['ossec']['install_type'] != 'agent' && node['ossec']['user']['syslog_output']['enabled'] }
   notifies :restart, 'service[ossec]', :delayed
 end
+
+include_recipe 'ossec::rules'
 
 service "ossec" do
   supports :status => true, :restart => true
