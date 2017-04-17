@@ -19,6 +19,4 @@
 
 include_recipe 'ossec::repository'
 
-package 'ossec' do
-  package_name value_for_platform_family('debian' => 'ossec-hids', 'default' => 'ossec-hids-server')
-end
+package 'ossec-hids'

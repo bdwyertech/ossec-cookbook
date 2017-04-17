@@ -19,7 +19,13 @@
 
 case node['platform_family']
 when 'fedora', 'rhel'
-  include_recipe 'yum-atomic'
+  yum_repository 'wazuh' do
+    description 'WAZUH OSSEC Repository - www.wazuh.com'
+    baseurl     'http://ossec.wazuh.com/el/$releasever/$basearch'
+    gpgkey      'http://ossec.wazuh.com/key/RPM-GPG-KEY-OSSEC'
+    gpgcheck    true
+    action :create
+  end
 when 'debian'
   package 'lsb-release'
 

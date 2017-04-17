@@ -91,7 +91,7 @@ service 'stop ossec' do # ~FC037
   service_name platform_family?('debian') ? 'ossec' : 'ossec-hids'
   action :nothing
 
-  %w( disable stop ).each do |action|
+  %w(disable stop).each do |action|
     subscribes action, 'package[ossec]', :immediately
   end
 end
