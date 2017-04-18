@@ -23,6 +23,10 @@ default['ossec']['server_role']     = 'ossec_server'
 default['ossec']['server_env']      = nil
 default['ossec']['agent_server_ip'] = nil
 
+# wazuh
+default['wazuh']['enabled']         = false
+default['wazuh']['version']         = 'v1.1.1'
+
 # data bag configuration
 default['ossec']['data_bag']['encrypted']  = false
 default['ossec']['data_bag']['name']       = 'ossec'
